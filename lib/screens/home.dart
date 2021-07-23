@@ -41,7 +41,7 @@ class Home extends StatelessWidget {
             children: [
               Column(children: [
                 Container(
-                  padding: EdgeInsets.fromLTRB(0, 30, 0, 10),
+                  padding: EdgeInsets.only(top: 70, bottom: 10),
                   child: Text(
                     "New Disaster",
                     style: TextStyle(
@@ -59,21 +59,9 @@ class Home extends StatelessWidget {
                 ),
               ]),
 
-              // Container(
-                 TextFormField(
-                  decoration: InputDecoration(
-                    labelText: "Disaster Name",
-                    labelStyle: TextStyle(color: Colors.white),
-                    helperText: "Select a name for this disaster",
-                    helperStyle: TextStyle(color: Colors.white),
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFF6200EE)),
-                    ),
-                  ),
-                ),
-              // ),
               Column(
                 children: [
+                  
                   Container(
                     child: ElevatedButton(
                       onPressed: () => selectDate(context),
@@ -90,13 +78,36 @@ class Home extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.fromLTRB(30, 15, 30, 100),
+                    padding: EdgeInsets.fromLTRB(30, 15, 30, 25),
                     child: Text(
                       "Select Date",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 22,
                           fontWeight: FontWeight.w400),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(bottom: 25),
+                    child: Text(
+                      "1000-01-01 00:00:00",
+                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                  ),
+                  Container(
+                    width: 250,
+                    padding: EdgeInsets.only(bottom: 60),
+                    child: TextFormField(
+                      style: TextStyle(color: Colors.white),
+                      decoration: InputDecoration(
+                        hintText: "New Disaster",
+                        hintStyle: TextStyle(color: Colors.white),
+                        helperText: "Select a name for this disaster",
+                        helperStyle: TextStyle(color: Colors.white),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFF6200EE)),
+                        ),
+                      ),
                     ),
                   ),
                 ],
