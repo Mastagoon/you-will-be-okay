@@ -18,17 +18,11 @@ class _HomeState extends State<Home> {
 
   Future<void> setDateToPref(countdownDate) async {
     final _prefs = await SharedPreferences.getInstance();
-    print("setting: $countdownDate");
-    print("setting: ${DateTime.fromMillisecondsSinceEpoch(countdownDate)}");
     _prefs.setInt("countdownDate", countdownDate);
   }
 
   void screenCheck() async {
-    print("executing screencheck");
     int countdownDate = await getCountdownTarget();
-    print("countdown valuefromscreen $countdownDate");
-    print(
-        "countdown valuefromscreen ${DateTime.fromMillisecondsSinceEpoch(countdownDate)}");
     // no countdownTarget selected
     if (countdownDate == 0) return;
     // there is a countdownTarget
@@ -50,7 +44,6 @@ class _HomeState extends State<Home> {
       lastDate: DateTime(DateTime.now().year + 5),
     );
     if (_date == null) return;
-    print("Selected Date: $_date");
     // select time
     final _time =
         await showTimePicker(context: context, initialTime: TimeOfDay.now());
@@ -58,7 +51,6 @@ class _HomeState extends State<Home> {
     final _dt = new DateTime(
             _date.year, _date.month, _date.day, _time.hour, _time.minute)
         .millisecondsSinceEpoch;
-    print("dt va: $_dt");
     await setDateToPref(_dt);
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => Countdown()));

@@ -1,6 +1,6 @@
 {
-    "name": "timerapp",
-    "short_name": "timerapp",
+    "name": "And then you'll be okay",
+    "short_name": "you'll_be_okay",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

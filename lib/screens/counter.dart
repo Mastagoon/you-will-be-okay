@@ -17,9 +17,6 @@ class _CountdownState extends State<Countdown> {
   static Future<int> getCountdownTarget() async {
     final _prefs = await SharedPreferences.getInstance();
     final countdownDate = _prefs.getInt("countdownDate");
-    print("cdd val: $countdownDate");
-    print(
-        "cdd val: ${DateTime.fromMillisecondsSinceEpoch(countdownDate ?? 0)}");
     return countdownDate ?? 0;
   }
 
@@ -31,7 +28,6 @@ class _CountdownState extends State<Countdown> {
   @override
   void initState() {
     super.initState();
-    print("initilized State");
     startTimer();
   }
 
@@ -42,12 +38,8 @@ class _CountdownState extends State<Countdown> {
       stopTimer();
     } else {
       timerActive = true;
-      final temp = DateTime.fromMicrosecondsSinceEpoch(countDownTarget);
-      duration = Duration(
-          days: temp.day,
-          hours: temp.hour,
-          minutes: temp.minute,
-          seconds: temp.second);
+      duration = DateTime.fromMillisecondsSinceEpoch(countDownTarget)
+          .difference(DateTime.now());
       timer = Timer.periodic(Duration(seconds: 1), (_) => updateTime());
     }
   }
